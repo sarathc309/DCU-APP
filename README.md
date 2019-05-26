@@ -1,2 +1,0 @@
-# DCU-APP
-DCU App

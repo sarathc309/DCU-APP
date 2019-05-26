@@ -31,7 +31,17 @@ Please enter your username and password below
         <br/>
         <br/>
         <input type="submit" value="Submit"/>
-            
+       
+        
+         
     </form:form>
+    
+    <form action="register">
+    <input type="submit" value="Register">
+    
+    </form>
+    
+    
+    
 </body>
 </html>

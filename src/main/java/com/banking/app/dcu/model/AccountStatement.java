@@ -14,11 +14,10 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
-@Table(name="account_reporting")
-public class AccountReporting {
+@Table(name="account_statement")
+public class AccountStatement {
 
-	@Column(nullable=false)
-	private String acct_cd;
+	
 	@Id
 	@GeneratedValue
 	private long acct_no;
@@ -37,14 +36,14 @@ public class AccountReporting {
 	@UpdateTimestamp
 	@Column(nullable=false)
 	private LocalDateTime date_updated;
-	public AccountReporting()
+	public AccountStatement()
 	{
 		
 	}
-	public AccountReporting(String account_cd, long account_no, double amount, String trans_type, String memo,
+	public AccountStatement( long account_no, double amount, String trans_type, String memo,
 			LocalDateTime date_created, LocalDateTime date_updated) {
 		super();
-		this.acct_cd = account_cd;
+		
 		this.acct_no = account_no;
 		this.amount = amount;
 		this.trans_type = trans_type;
@@ -52,12 +51,7 @@ public class AccountReporting {
 		this.date_created = date_created;
 		this.date_updated = date_updated;
 	}
-	public String getAccount_cd() {
-		return acct_cd;
-	}
-	public void setAccount_cd(String account_cd) {
-		this.acct_cd = account_cd;
-	}
+	
 	public long getAccount_no() {
 		return acct_no;
 	}
@@ -96,7 +90,7 @@ public class AccountReporting {
 	}
 	@Override
 	public String toString() {
-		return "AccountReporting [account_cd=" + acct_cd + ", account_no=" + acct_no + ", amount=" + amount
+		return "AccountReporting [ account_no=" + acct_no + ", amount=" + amount
 				+ ", trans_type=" + trans_type + ", memo=" + memo + ", date_created=" + date_created + ", date_updated="
 				+ date_updated + "]";
 	}

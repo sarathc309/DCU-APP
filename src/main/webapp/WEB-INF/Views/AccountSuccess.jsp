@@ -7,9 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Welcome ${Firstname} ${Lastname} to DCU Banking APP</h1>
-<form action="createAccountTest" method="post">
-<input type="submit" value="open a banking account today"></input>
-</form> 
+<h1>Your Account is created Successfully</h1>
 </body>
 </html>

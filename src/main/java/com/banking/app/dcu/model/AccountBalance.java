@@ -1,5 +1,6 @@
 package com.banking.app.dcu.model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -7,28 +8,33 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.stereotype.Component;
 
 @Entity
-@Table(name="account_details")
-public class AccountDetails {
+@Table(name="account_balance")
+@Component
+public class AccountBalance implements Serializable{
 
-	@Column(nullable=false)
-	private String acct_cd;
-	@Id
-	@GeneratedValue
-	private long acct_no;
+
+	
 
 //	@OneToMany
 //	private AccountReporting reporting;
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
+	@OneToOne
+	private UserAccount useraccount;
 	@Column(nullable=false)
-	private int uid;
-	@Column(nullable=false)
-	private double balance;
+	private Double balance;
 	@CreationTimestamp
 	@Column(nullable=false)
 	private LocalDateTime date_created;
@@ -36,51 +42,32 @@ public class AccountDetails {
 	@Column(nullable=false)
 	private LocalDateTime date_updated;
 	
-	public AccountDetails()
+	public AccountBalance()
 	{
 		
 	}
 
-	public AccountDetails(String account_cd, long account_no, int uid, double balance, LocalDateTime date_created,
+	public AccountBalance(  Double balance, LocalDateTime date_created,
 			LocalDateTime date_updated) {
 		super();
-		this.acct_cd = account_cd;
-		this.acct_no = account_no;
-		this.uid = uid;
+		
+		
+		
 		this.balance = balance;
 		this.date_created = date_created;
 		this.date_updated = date_updated;
 	}
 
-	public String getAccount_cd() {
-		return acct_cd;
-	}
 
-	public void setAccount_cd(String account_cd) {
-		this.acct_cd = account_cd;
-	}
 
-	public long getAccount_no() {
-		return acct_no;
-	}
 
-	public void setAccount_no(long account_no) {
-		this.acct_no = account_no;
-	}
 
-	public int getUid() {
-		return uid;
-	}
 
-	public void setUid(int uid) {
-		this.uid = uid;
-	}
-
-	public double getBalance() {
+	public Double getBalance() {
 		return balance;
 	}
 
-	public void setBalance(double balance) {
+	public void setBalance(Double balance) {
 		this.balance = balance;
 	}
 
@@ -100,9 +87,28 @@ public class AccountDetails {
 		this.date_updated = date_updated;
 	}
 
+	
+	public UserAccount getUseraccount() {
+		return useraccount;
+	}
+
+	public void setUseraccount(UserAccount useraccount) {
+		this.useraccount = useraccount;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@Override
 	public String toString() {
-		return "AccountDetails [account_cd=" + acct_cd + ", account_no=" + acct_no + ", uid=" + uid + ", balance="
+		return "AccountDetails [ account_no=" + " balance="
 				+ balance + ", date_created=" + date_created + ", date_updated=" + date_updated + "]";
 	}
 	

@@ -1,4 +1,4 @@
-/*create table users(
+	/*create table users(
 user_name varchar(255) not null,
 password varchar(255) not null,
 uid integer(5) not null,
@@ -51,16 +51,29 @@ foreign key(acct_no) references account_details(acct_no),
 foreign key(acct_cd) references account(acct_cd)
 );*/
 
+
+CREATE SEQUENCE acct_num
+  MINVALUE 1000001
+  MAXVALUE 9999999
+  START WITH 1000001
+  INCREMENT BY 1
+  CACHE 20;
+
+
+
+
+
+
 insert into users(user_name,password,uid,date_created,date_updated)
 values('nbehara','Rockz520',10510,sysdate(),sysdate());
 insert into users(user_name,password,uid,date_created,date_updated)
 values('spolu','Rockz510',10511,sysdate(),sysdate());
 
-insert into user_info(uid,first_name,last_name,e_mail,phone_no,ssn,
+insert into user_info(users_uid,first_name,last_name,e_mail,phone_no,ssn,
 date_created,date_updated)
 values(10510,'Naga','Behara','sarathc309@gmail.com',3617200552,123456789
 ,sysdate(),sysdate());
-insert into user_info(uid,first_name,last_name,e_mail,phone_no,ssn,
+insert into user_info(users_uid,first_name,last_name,e_mail,phone_no,ssn,
 date_created,date_updated)
 values(10511,'Mounica','Polu','spolu@gmail.com',3625467895,987654321,
 sysdate(),sysdate());
@@ -70,19 +83,19 @@ values('CHK','CHECKINGS ACCOUNT',sysdate(),sysdate());
 
 insert into account(acct_cd,acct_name,date_created,date_updated)
 values('SAV','SAVINGS ACCOUNT',sysdate(),sysdate());
+/*
+insert into account_balance(acct_no,balance,date_created,date_updated)
+values(2450000510,5590.56,sysdate(),sysdate());
+insert into account_balance(acct_no,balance,date_created,date_updated)
+values(7280000511,10000.56,sysdate(),sysdate());
 
-insert into account_details(uid,acct_no,acct_cd,balance,date_created,date_updated)
-values(10510,2450000510,'CHK',5590.56,sysdate(),sysdate());
-insert into account_details(uid,acct_no,acct_cd,balance,date_created,date_updated)
-values(10511,7280000511,'SAV',10000.56,sysdate(),sysdate());
+insert into account_statement(acct_no,amount,trans_type,memo,date_created,date_updated)
+values(7280000511,5000.00,'Deposit','transfer from xyz',sysdate(),sysdate());
 
-insert into account_reporting(acct_no,acct_cd,amount,trans_type,memo,date_created,date_updated)
-values(7280000511,'SAV',5000.00,'Deposit','transfer from xyz',sysdate(),sysdate());
+insert into account_statement(acct_no,amount,trans_type,memo,date_created,date_updated)
+values(2450000510,100.00,'Transfer','bill pay',sysdate(),sysdate());
 
-insert into account_reporting(acct_no,acct_cd,amount,trans_type,memo,date_created,date_updated)
-values(2450000510,'CHK',100.00,'Transfer','bill pay',sysdate(),sysdate());
-
-
+*/
 
 
 
