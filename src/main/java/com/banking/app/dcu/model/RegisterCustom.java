@@ -21,6 +21,20 @@ private UserAccount account;
 @Autowired
 private AccountBalance balance;
 
+//new change Start
+@Autowired
+private Account bnk_acct;
+
+public Account getBnk_acct() {
+	return bnk_acct;
+}
+
+public void setBnk_acct(Account bnk_acct) {
+	this.bnk_acct = bnk_acct;
+}
+
+//end
+
 public UserAccount getAccount() {
 	return account;
 }

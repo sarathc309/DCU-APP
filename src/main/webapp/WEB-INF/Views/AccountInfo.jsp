@@ -10,14 +10,14 @@
 </head>
 <body>
 
-<table>
+<table  border="1" >
 <tr>
 <th>Account Name</th>
 <th>Balance</th>
 </tr>
 <c:forEach items="${account_list}" var="list" varStatus="">
 <tr>
-<td>${list.acct_name }INGS ACCOUNT</td>
+<td>${list.acct_name }</td>
  <td>${list.amount }</td>
 
 
@@ -29,6 +29,11 @@
 
 </table>
 
+<br></br>
+
+<form action="createAccountTest" method="post" >
+<input type="submit" value="open a banking account today"></input>
+</form>
 
 </body>
 </html>

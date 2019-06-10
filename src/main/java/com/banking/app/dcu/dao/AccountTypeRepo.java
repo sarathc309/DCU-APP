@@ -39,13 +39,21 @@ public List<Account> getBankAccountNames()
 	
 	return accountlist;
 }
-	
-	public AccountTypeRepo()
+
+public Account getAccountDetails(String acct_cd)
+{
+	return manager.find(Account.class, acct_cd);
+}
+
+
+
+public AccountTypeRepo()
 	{
 		System.out.println("Inside AccountTypeRepo Constructor");
 	}
 	
 public boolean checkIfAccountExists(String acct_cd,Users user)
+
 {
 	
 	   //result=true;
@@ -56,9 +64,13 @@ System.out.println("acct_cd" + acct_cd +"Inside Check Function");
 
 	   for(int i=0;i<accountlist.size();i++)
 	   {
-		   if(accountlist.get(i).getAcct_cd().equals(acct_cd))
+		   //new change
+		  String account_code= accountlist.get(i).getAccount().getAcct_cd();
+		   
+		  // if(accountlist.get(i).getAcct_cd().equals(acct_cd))
+		   if(account_code.equals(acct_cd))
 		   {
-			   System.out.println("Inside IFFFFFFFFFFFFF Condition"+ accountlist.get(i).getAcct_cd()+"  "+ acct_cd);
+			   System.out.println("Inside IFFFFFFFFFFFFF Condition"+ account_code+"  "+ acct_cd);
 			   
 			   return false;
 		   }
@@ -82,7 +94,9 @@ public List<CustomAccount> accountDetails(Users user)
 	for(int i=0;i<list.size();i++)
 	{
 		
-	acct_list.add(new CustomAccount(list.get(i).getAcct_cd(), list.get(i).getBalance().getBalance()));
+	//acct_list.add(new CustomAccount(list.get(i).getAcct_cd(), list.get(i).getBalance().getBalance()));
+		
+		acct_list.add(new CustomAccount(list.get(i).getAccount().getAcct_name(), list.get(i).getBalance().getBalance()));	
 		
 	}
 	

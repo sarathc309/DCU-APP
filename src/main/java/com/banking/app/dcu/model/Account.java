@@ -1,16 +1,39 @@
 package com.banking.app.dcu.model;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.stereotype.Component;
 @Entity
+@Component
 public class Account {
  
+	//New change
+	@OneToMany(mappedBy="account")
+	private List<UserAccount> user_account;
+	
+	
+	public List<UserAccount> getUser_account() {
+		return user_account;
+	}
+	public void addUser_account(UserAccount account) {
+		this.user_account.add(account);
+	}
+	public void deleteUser_account(UserAccount account) {
+		this.user_account.remove(account);
+	}
+	
+	
+	
+	//End
+
 	@Id
 	@Column(nullable=false)
 	private String acct_cd;
@@ -22,18 +45,21 @@ public class Account {
 	@UpdateTimestamp
 	@Column(nullable=false)
 	private LocalDateTime date_updated;
-	public String getAccount_cd() {
+
+	public String getAcct_cd() {
 		return acct_cd;
 	}
-	public void setAccount_cd(String account_cd) {
-		this.acct_cd = account_cd;
+	public void setAcct_cd(String acct_cd) {
+		this.acct_cd = acct_cd;
 	}
-	public String getAccount_name() {
+	public String getAcct_name() {
 		return acct_name;
 	}
-	public void setAccount_name(String account_name) {
-		this.acct_name = account_name;
+	public void setAcct_name(String acct_name) {
+		this.acct_name = acct_name;
 	}
+	
+	
 	public LocalDateTime getDate_created() {
 		return date_created;
 	}

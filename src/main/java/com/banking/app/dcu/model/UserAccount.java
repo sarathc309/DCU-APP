@@ -46,6 +46,18 @@ public class UserAccount implements Serializable {
 	
 @ManyToOne
 private Users users;
+//New Change
+@ManyToOne
+private Account account;
+public Account getAccount() {
+	return account;
+}
+public void setAccount(Account account) {
+	this.account = account;
+}
+
+//End change
+
 
 
 @OneToOne(mappedBy="useraccount")
@@ -56,8 +68,10 @@ private AccountBalance balance;
 //@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="my_acct_seq")
 @Column(nullable=false)
 private String account_no;
-@Column(nullable=false)
-private String acct_cd;
+
+//New change
+/*@Column(nullable=false)
+private String acct_cd;*/
 @CreationTimestamp
 @Column(nullable=false)
 private LocalDateTime date_created;
@@ -77,12 +91,14 @@ public void setAccount_no(String account_no) {
 //	
 	  this.account_no=account_no;
 }
+
+/*
 public String getAcct_cd() {
 	return acct_cd;
 }
 public void setAcct_cd(String acct_cd) {
 	this.acct_cd = acct_cd;
-}
+}*/
 public LocalDateTime getDate_created() {
 	return date_created;
 }
@@ -118,21 +134,22 @@ public UserAccount()
 {
 	
 }
-public UserAccount(String acct_cd,
+public UserAccount(//String acct_cd,
 		LocalDateTime date_created, LocalDateTime date_updated, String is_account_active) {
 	super();
 	
 	//this.users = users;
 	//this.account_no = account_no;
-	this.acct_cd = acct_cd;
+	//this.acct_cd = acct_cd;
 	this.date_created = date_created;
 	this.date_updated = date_updated;
 	this.is_account_active = is_account_active;
-}
+}//3536
 @Override
 public String toString() {
 	return "UserAccount [users=" + users + ", account_no=" + account_no + ", acct_cd="
-			+ acct_cd + ", date_created=" + date_created + ", date_updated=" + date_updated + ", is_account_active="
+			//+ acct_cd 
+			+ ", date_created=" + date_created + ", date_updated=" + date_updated + ", is_account_active="
 			+ is_account_active + "]";
 }
 }

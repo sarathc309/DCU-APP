@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -34,6 +37,9 @@ public class AccountBalance implements Serializable{
 	@OneToOne
 	private UserAccount useraccount;
 	@Column(nullable=false)
+	@NotNull(message="required")
+	@Min(value=0,message="minimum value is 0 Dollors")
+	@Max(value=100000,message="maximum amount can be deposited online is 100000")
 	private Double balance;
 	@CreationTimestamp
 	@Column(nullable=false)

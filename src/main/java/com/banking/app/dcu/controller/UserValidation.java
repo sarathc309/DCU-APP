@@ -84,6 +84,9 @@ public String validateUser(@Valid @ModelAttribute("user") Users user,
 	}
 	else
 	{
+		
+		System.out.println("In else block");
+		
 		model.addAttribute("errorMessage", "Please enter valid Username and Password");
 	return "Login";
 	}

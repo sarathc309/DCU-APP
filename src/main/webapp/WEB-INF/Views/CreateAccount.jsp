@@ -37,10 +37,10 @@ $("#form").submit(function(e){
 <h1>choose the type of account below </h1>
 
 <div>
-Select the Account Type<form:select path="account.acct_cd">
+Select the Account Type<form:select path="bnk_acct.acct_cd">
 
 <form:options items="${custom.acct_cd}"/>
-<form:errors path="account.acct_cd" cssClass="error"></form:errors>
+<form:errors path="bnk_acct.acct_cd" cssClass="error"></form:errors>
 
 </form:select>
 </div>
